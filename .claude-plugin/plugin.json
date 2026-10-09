@@ -1,0 +1,32 @@
+{
+  "name": "ohmyhost",
+  "displayName": "ohmyho.st",
+  "version": "0.1.31",
+  "description": "Build and host web apps from Claude. Version your files, review a live preview, and publish when you are ready.",
+  "author": {
+    "name": "Amerged B.V.",
+    "url": "https://ohmyho.st"
+  },
+  "homepage": "https://docs.ohmyho.st/",
+  "repository": "https://github.com/amerged-org/ohmyhost-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "hosting",
+    "web-apps",
+    "deployment",
+    "cloudflare",
+    "version-control"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://docs.ohmyho.st/",
+  "supportUrl": "https://docs.ohmyho.st/support",
+  "privacyPolicyUrl": "https://ohmyho.st/privacy",
+  "termsOfServiceUrl": "https://ohmyho.st/terms",
+  "metadata": {
+    "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
+    "release": "0.1.31",
+    "variant": "claude-directory-nonpayment"
+  }
+}
