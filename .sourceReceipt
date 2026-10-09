@@ -1,219 +1,68 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.31",
+  "version": "0.1.32",
+  "variant": "claude-directory-remote-only",
   "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-  "canonicalCustomerSkillFiles": [
+  "canonicalReleaseVersion": "0.1.31",
+  "publicPluginSourceParent": "c9c82d1fc7939aacff656311814738c143d10111",
+  "skills": 4,
+  "allSkillsDerived": true,
+  "exactCanonicalSkills": 0,
+  "derivedSkills": [
+    {
+      "path": "skills/ohmyhost-get-started/SKILL.md",
+      "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
+      "canonicalSha256": "e7c0d818285de84d6a7e1b4a1e170e20fb04721ad300e16a509b3b0859ee3a86",
+      "derivedSha256": "ee10ac06816fccc5b64fcb96e826606328cf57a1b0359a4ef26aabb30eee7625",
+      "exactCanonicalBytes": false,
+      "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
+    },
     {
       "path": "skills/ohmyhost-build-portable-app/SKILL.md",
-      "sha256": "f10f18bd6d63a0a74c6f7187fc2e3e0e3cd9afdb2a23630afacbedb1daa6e238",
-      "bytes": 5130,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-build-portable-app/agents/openai.yaml",
-      "sha256": "a7bd1fa56a9fcb6aad27b8ac9af30305024669e62e5c98c2db761c844b91c0f4",
-      "bytes": 262,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-build-portable-app/references/cli-deploy.md",
-      "sha256": "cd1ce8a5cadada25e17275a23855bb400fa961c6830e9ec998db42f78fa7bb70",
-      "bytes": 56367,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-build-portable-app/references/database-runtime.md",
-      "sha256": "0f2a314fd85192d2d68342853baf4fd8347775fd785e6ce8450e3d59dc661c83",
-      "bytes": 7991,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-build-portable-app/references/mail.md",
-      "sha256": "31b10783e45789beed0a782f60772d60ad1b3220418d3028611916742d93e884",
-      "bytes": 8908,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-build-portable-app/references/row-level-security.md",
-      "sha256": "af07c25ad16a180be67f772ab904f3c0407e4ebb073fef93c4a878fec86caade",
-      "bytes": 7044,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-build-portable-app/references/stack-contracts.md",
-      "sha256": "aee88821086edc4f1e0bb68efecd39dfff0138962bdb31f41d472714470135ae",
-      "bytes": 35538,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-deploy-github/SKILL.md",
-      "sha256": "7a4695ef8377a6a97069ba61d9cbf74b4970926c6e7f8e73d6eebecf086f180e",
-      "bytes": 17030,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": false
+      "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
+      "canonicalSha256": "f10f18bd6d63a0a74c6f7187fc2e3e0e3cd9afdb2a23630afacbedb1daa6e238",
+      "derivedSha256": "86fd193fe4ca65dc4e79cf93a326521feb843601feae075cdb056b2c248142f6",
+      "exactCanonicalBytes": false,
+      "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
     },
     {
       "path": "skills/ohmyhost-deploy/SKILL.md",
-      "sha256": "fe6374137f127416fce0c62f606c486e078e81a75b0fa33e2efb34d9d831909f",
-      "bytes": 18867,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-domains-and-mail/SKILL.md",
-      "sha256": "c864288b7edb8af13017e56d4fcc53f31e7a75ad31726ba8788a0f8e0eb2ecb5",
-      "bytes": 11465,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-export-database/SKILL.md",
-      "sha256": "c86303a865cceca6eb8331759d6296caa0b1e88d8d042645de5ba1e73669c19a",
-      "bytes": 2262,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-get-started/SKILL.md",
-      "sha256": "e7c0d818285de84d6a7e1b4a1e170e20fb04721ad300e16a509b3b0859ee3a86",
-      "bytes": 36225,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-get-started/references/harness-setup.md",
-      "sha256": "8b2190a00eacd58967256d45eaa1af78ebab6174759733a3209f4226773bdd94",
-      "bytes": 5610,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-get-started/references/surfaces.md",
-      "sha256": "b2e7fba7f41f233179aa187f1b1a3f98cda76c809fb27e24fb40954991ec47c5",
-      "bytes": 26900,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-manage-database/SKILL.md",
-      "sha256": "df69fe18452dc6ad43ab7ecbc1d54a3b4fabd2f46c089350aeef71a38a01ccf3",
-      "bytes": 11523,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-migrate-supabase-postgres/SKILL.md",
-      "sha256": "d7e7e781fab7600a637ffde0b561c0872cf1baa36a554f3be259fda6088188e5",
-      "bytes": 5471,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-migrate-supabase-postgres/agents/openai.yaml",
-      "sha256": "01ae3ff047be0a3035381256d6033155f498c638e2134d11ecc528360552800a",
-      "bytes": 284,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-migrate-supabase-postgres/references/provider-contracts.md",
-      "sha256": "358b84e6b6e0a2f3515c5a0a702201eae134cbbde3104257d68ca214634649fa",
-      "bytes": 11453,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-migrate-supabase-postgres/scripts/create-portable-baseline.mjs",
-      "sha256": "986bff1aaf1823ffcdf682ce7d77053b9e57d1ed7595c97669d1125f542922ac",
-      "bytes": 18232,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-migrate-supabase-postgres/scripts/portable-rls.mjs",
-      "sha256": "5799460a67b95d052d76e0bcb31159fffc0a6a34372af72edaf8f3e422ed7bab",
-      "bytes": 24412,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
+      "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
+      "canonicalSha256": "fe6374137f127416fce0c62f606c486e078e81a75b0fa33e2efb34d9d831909f",
+      "derivedSha256": "c337bac079f353190e09dc93b839e959014c7fc75d937875a77c30e9b03594a2",
+      "exactCanonicalBytes": false,
+      "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
     },
     {
       "path": "skills/ohmyhost-troubleshoot-deployment/SKILL.md",
-      "sha256": "0eabbe9eb8270956b0d36c8feebcdeb477614d96faaad7935972309e310d8c56",
-      "bytes": 14149,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": true
-    },
-    {
-      "path": "skills/ohmyhost-usage-and-budgets/SKILL.md",
-      "sha256": "d8db8f522af418e4442186868d5583f49c96bc077552f33bfb038a3e7b939dc6",
-      "bytes": 9922,
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSourceObjectVerified": true,
-      "packagedBytesExactCanonical": false
+      "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
+      "canonicalSha256": "0eabbe9eb8270956b0d36c8feebcdeb477614d96faaad7935972309e310d8c56",
+      "derivedSha256": "b69c27ea85f600d89610913867da767ebbd6cdb30be0d058ccb2eca4d7fc21d8",
+      "exactCanonicalBytes": false,
+      "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
     }
   ],
-  "privatePlatformSourceIncluded": false,
-  "canonicalSkillEdits": false,
-  "mcpEndpoint": "https://app.ohmyho.st/mcp",
+  "runtimeConnection": "https://app.ohmyho.st/mcp",
+  "declaredMcpServers": 1,
+  "localExecution": false,
+  "localFilesOrCredentials": false,
+  "externalBehaviorInstructionLoading": false,
+  "refsOrExecutableHelpers": 0,
+  "retainedBrandSha256": "568f059519b74fc71c3d1eb20a4cbf3df2a8b7bf9d3e8100ce9589767c60cfa5",
   "legalFiles": [
     {
       "path": "LICENSE",
-      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "samePublicParent": true
     },
     {
       "path": "NOTICE",
-      "sha256": "777589eaee391e636ec93c7bdc8aec548776f90b2cff449b679d346630c62a3f"
+      "sha256": "777589eaee391e636ec93c7bdc8aec548776f90b2cff449b679d346630c62a3f",
+      "samePublicParent": true
     }
   ],
-  "iconSha256": "568f059519b74fc71c3d1eb20a4cbf3df2a8b7bf9d3e8100ce9589767c60cfa5",
-  "packageMetadataAndReadmeAreClaudePackagingAdditions": true,
-  "claudeDerivedSkillFiles": [
-    {
-      "path": "skills/ohmyhost-usage-and-budgets/SKILL.md",
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSha256": "d8db8f522af418e4442186868d5583f49c96bc077552f33bfb038a3e7b939dc6",
-      "derivedSha256": "5245c34cb60f179a9123ceb57e18fc6af84015b2fa1139b55f2a86919fa6769b",
-      "reason": "Claude directory package offers usage reporting and non-payment project budgets; funding, subscriptions and payment configuration remain manual portal actions.",
-      "canonicalSourceWasChanged": false
-    },
-    {
-      "path": "skills/ohmyhost-deploy-github/SKILL.md",
-      "sourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSha256": "7a4695ef8377a6a97069ba61d9cbf74b4970926c6e7f8e73d6eebecf086f180e",
-      "derivedSha256": "620fce52b855d6685bb53f92d4a7ad289e8bc41751131f19f525988511a3ab4f",
-      "reason": "Clarify human-only Paid activation in the signed-in portal before configuring the already requested mail workflow.",
-      "canonicalSourceWasChanged": false
-    }
-  ],
-  "exactCanonicalSkillReferenceHelperFiles": 20,
-  "exactCanonicalSkills": 8,
-  "existingGlobalCliPaymentCapabilitiesTechnicallyDisabled": false
+  "privatePlatformCodeIncluded": false,
+  "reviewerCredentialsInPackage": false,
+  "directoryAcceptanceClaimed": false,
+  "globalCliFeaturesChanged": false
 }
