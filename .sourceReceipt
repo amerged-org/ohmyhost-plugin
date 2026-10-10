@@ -1,10 +1,11 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.32",
+  "version": "0.1.33",
   "variant": "claude-directory-remote-only",
   "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
   "canonicalReleaseVersion": "0.1.31",
-  "publicPluginSourceParent": "c9c82d1fc7939aacff656311814738c143d10111",
+  "publicPluginSourceParent": "41eaf0b551ab807cd8916cdaae09db8c8ab2cd4e",
+  "updateScope": "Directory marketing copy only; the four static workflows, remote connection, icon and legal files are unchanged.",
   "skills": 4,
   "allSkillsDerived": true,
   "exactCanonicalSkills": 0,

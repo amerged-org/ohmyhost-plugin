@@ -1,21 +1,30 @@
-# ohmyho.st for Claude
+# Build apps directly in Claude
 
-Build and host web apps through your conversation in Claude. Describe your app, save changes as versions, inspect a live Dev preview, and publish the version you approved. Continue the same project's saved source in another chat. This plugin uses one declared HTTPS MCP connector at `https://app.ohmyho.st/mcp`.
+Your idea doesn't need another app builder. It needs a place to go live.
+
+Tell Claude what you want to build: a website, a tool for your team, or the app you've been thinking about. Keep shaping it in the same chat. ohmyho.st gives it a home online.
+
+Build apps like you would with Lovable, but directly in Claude. No separate editor. No switching to a hosting platform to keep building.
+
+Try your app, ask Claude to improve it, and launch when you're happy. Come back to the conversation whenever you want to add a feature or undo a change.
 
 ![ohmyho.st logo](./assets/icon.png)
 
 ## Connect and start
 
-Install the plugin and connect ohmyho.st using the client's managed OAuth flow. Sign in with your own ohmyho.st account, then select the workspace and projects your agent may access in the protected portal. Editing/previews and production publishing are granted separately. Hosting requires available credits and the permissions for the requested action.
+1. Connect ohmyho.st to Claude using your own account.
+2. Tell Claude what you want to build and try the app it creates.
+3. Ask Claude to put it online when you're happy with it.
+
+You approve access and choose when your app goes live. An ohmyho.st account and hosting credits are required. The connection uses managed OAuth and the declared first-party server at `https://app.ohmyho.st/mcp`; you don't paste tokens into chat.
 
 The plugin has four self-contained workflows: connecting to the correct account/project, preparing supported application source, saving/deploying a concrete version and publishing its inspected preview, and diagnosing failures. They use only the declared remote connector's tools. Vite/React, Next.js, TanStack Start and plain Worker apps follow the hosting contract. For new ordinary chat-built apps, the Vite/React template supplies the initial source. A persisted GitHub binding can deploy an already pushed selected commit; this plugin does not edit or push the GitHub repository.
 
 ## Examples
 
-- "Create a simple web app and show me a preview."
-- "Continue my existing application and change its home page."
-- "Publish the Dev preview I have just checked, using that exact version."
-- "Explain why this deployment failed and fix the reported source error."
+- "Build a booking app for my business. Let me try it, then put it online."
+- "Add a customer dashboard to the app we built. Show me how it looks."
+- "I like this version. Put it online and give me a link I can share."
 
 ## What runs and what data is handled
 

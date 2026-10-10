@@ -1,8 +1,8 @@
 {
   "name": "ohmyhost",
   "displayName": "ohmyho.st",
-  "version": "0.1.32",
-  "description": "Build, version, preview and publish web apps from Claude through the ohmyho.st remote connector.",
+  "version": "0.1.33",
+  "description": "Build and launch apps directly in Claude. Stay in your chat. We handle the hosting.",
   "author": {
     "name": "Amerged B.V.",
     "url": "https://ohmyho.st"
@@ -13,9 +13,9 @@
   "keywords": [
     "hosting",
     "web-apps",
-    "deployment",
-    "cloudflare",
-    "version-control"
+    "claude",
+    "app-builder",
+    "launch"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
