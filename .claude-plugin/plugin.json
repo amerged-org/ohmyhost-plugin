@@ -1,8 +1,8 @@
 {
   "name": "ohmyhost",
   "displayName": "ohmyho.st",
-  "version": "0.1.46",
-  "description": "Build and launch apps directly in Claude. Stay in your chat. We handle the hosting.",
+  "version": "0.1.47",
+  "description": "Build websites, forms, portals and web apps directly in Claude. Preview and publish with hosting, a shareable URL and a database when needed. A Lovable alternative, right in your chat.",
   "author": {
     "name": "Amerged B.V.",
     "url": "https://ohmyho.st"

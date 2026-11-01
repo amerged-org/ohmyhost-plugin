@@ -1,12 +1,10 @@
-# Build apps directly in Claude
+# Build and launch websites and apps directly in Claude
 
-Your idea doesn't need another app builder. It needs a place to go live.
+Build websites, forms, client portals and web apps by describing what you need in Claude. Keep improving your project in the same conversation, preview it, and publish it to a shareable URL when you are ready.
 
-Tell Claude what you want to build: a website, a tool for your team, or the app you've been thinking about. Keep shaping it in the same chat. ohmyho.st gives it a home online.
+ohmyho.st provides hosting and managed PostgreSQL for applications that need a database. Create a landing page, collect form submissions or build a customer portal, then return to the same chat to make changes.
 
-Build apps like you would with Lovable, but directly in Claude. No separate editor. No switching to a hosting platform to keep building.
-
-Try your app, ask Claude to improve it, and launch when you're happy. Come back to the conversation whenever you want to add a feature or undo a change.
+If you are looking for a Lovable alternative, you can build and launch with Claude while ohmyho.st handles the hosting.
 
 ![ohmyho.st logo](./assets/icon.png)
 
