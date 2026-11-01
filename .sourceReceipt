@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.34",
+  "version": "0.1.35",
   "variant": "claude-directory-remote-only",
   "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
   "canonicalReleaseVersion": "0.1.31",
-  "publicPluginSourceParent": "5679ad7e925bb21e7ef02e500df0c13d7c8a0065",
-  "updateScope": "README provider sentence only (the open-source PGCF platform replaces the retired database provider); the four static workflows, remote connection, icon and legal files are unchanged.",
+  "publicPluginSourceParent": "f0635d35be1cd1f5c690e4bef5631210767b5d1a",
+  "updateScope": "Restore current black-background brand icon and update remote access and troubleshooting guidance against the live MCP catalog and 0.1.44 public client release; the remote endpoint and legal files are unchanged.",
   "skills": 4,
   "allSkillsDerived": true,
   "exactCanonicalSkills": 0,
@@ -14,7 +14,7 @@
       "path": "skills/ohmyhost-get-started/SKILL.md",
       "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
       "canonicalSha256": "e7c0d818285de84d6a7e1b4a1e170e20fb04721ad300e16a509b3b0859ee3a86",
-      "derivedSha256": "ee10ac06816fccc5b64fcb96e826606328cf57a1b0359a4ef26aabb30eee7625",
+      "derivedSha256": "eb677a55033372068a5239df9a1268433c042580f5a21977c0955708475e1326",
       "exactCanonicalBytes": false,
       "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
     },
@@ -38,7 +38,7 @@
       "path": "skills/ohmyhost-troubleshoot-deployment/SKILL.md",
       "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
       "canonicalSha256": "0eabbe9eb8270956b0d36c8feebcdeb477614d96faaad7935972309e310d8c56",
-      "derivedSha256": "b69c27ea85f600d89610913867da767ebbd6cdb30be0d058ccb2eca4d7fc21d8",
+      "derivedSha256": "7874750c7de252c9ac9c9e407168c295a4795c0b483fd162805b70cc7e66fb08",
       "exactCanonicalBytes": false,
       "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
     }
@@ -49,7 +49,6 @@
   "localFilesOrCredentials": false,
   "externalBehaviorInstructionLoading": false,
   "refsOrExecutableHelpers": 0,
-  "retainedBrandSha256": "568f059519b74fc71c3d1eb20a4cbf3df2a8b7bf9d3e8100ce9589767c60cfa5",
   "legalFiles": [
     {
       "path": "LICENSE",
@@ -65,5 +64,9 @@
   "privatePlatformCodeIncluded": false,
   "reviewerCredentialsInPackage": false,
   "directoryAcceptanceClaimed": false,
-  "globalCliFeaturesChanged": false
+  "globalCliFeaturesChanged": false,
+  "comparisonReleaseVersion": "0.1.44",
+  "comparisonSourceCommit": "f533a9a50db8322cf5b8505628f13d5fb5fdfba9",
+  "currentBrandSha256": "6e0deb0ec084eeee2a73ed7e1b49e9dfe8a33a1eb3fe14c6b9517584ce789b36",
+  "brandSource": "https://ohmyho.st/brand/assets/logo-on-black.png"
 }
