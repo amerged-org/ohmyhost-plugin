@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.45",
+  "version": "0.1.46",
   "variant": "claude-directory-remote-only",
   "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
   "canonicalReleaseVersion": "0.1.31",
-  "publicPluginSourceParent": "f0635d35be1cd1f5c690e4bef5631210767b5d1a",
-  "updateScope": "Align the plugin to the public client release 0.1.45 and review the remote guidance against its live MCP catalog: the new database watch tools are outside the four workflows, and the operation_get read that the deploy and troubleshooting workflows rely on now finds deployment, source and project operations; the remote endpoint, the Skill texts and the legal files are unchanged.",
+  "publicPluginSourceParent": "5c53e2794f1ed389280dd43ae50360b9aca45180",
+  "updateScope": "Extend remote troubleshooting after the 0.1.45 alignment: explicitly confirmed and permission-checked operation reconciliation, and accurate remote database watch limitations. The remote endpoint, other workflows, icon and legal files are unchanged.",
   "skills": 4,
   "allSkillsDerived": true,
   "exactCanonicalSkills": 0,
@@ -38,7 +38,7 @@
       "path": "skills/ohmyhost-troubleshoot-deployment/SKILL.md",
       "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
       "canonicalSha256": "0eabbe9eb8270956b0d36c8feebcdeb477614d96faaad7935972309e310d8c56",
-      "derivedSha256": "7874750c7de252c9ac9c9e407168c295a4795c0b483fd162805b70cc7e66fb08",
+      "derivedSha256": "e45e6e80b700f262f30558dae360248f3b7b43a0ab15d8d3a575d5ac98a765b9",
       "exactCanonicalBytes": false,
       "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
     }
