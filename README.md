@@ -4,7 +4,7 @@ Build websites, forms, client portals and web apps by describing what you need i
 
 ohmyho.st provides hosting and managed PostgreSQL for applications that need a database. Create a landing page, collect form submissions or build a customer portal, then return to the same chat to make changes.
 
-Build a Lovable website directly in Claude while ohmyho.st handles the hosting.
+So simple this is just amazing and lovable.
 
 ![ohmyho.st logo](./assets/icon.png)
 
