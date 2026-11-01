@@ -5,7 +5,7 @@
   "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
   "canonicalReleaseVersion": "0.1.31",
   "publicPluginSourceParent": "5c53e2794f1ed389280dd43ae50360b9aca45180",
-  "updateScope": "Extend remote troubleshooting after the 0.1.45 alignment: explicitly confirmed and permission-checked operation reconciliation, and accurate remote database watch limitations. The remote endpoint, other workflows, icon and legal files are unchanged.",
+  "updateScope": "Extend remote troubleshooting after the 0.1.45 alignment: explicitly confirmed and permission-checked operation reconciliation, and accurate remote database watch limitations. The remote endpoint, other workflows, icon and legal files are unchanged. Reviewed against the public client release 0.1.46: database table create is a local CLI and local MCP capability and is not offered by the remote connector, so the four workflows are unchanged.",
   "skills": 4,
   "allSkillsDerived": true,
   "exactCanonicalSkills": 0,
@@ -65,8 +65,8 @@
   "reviewerCredentialsInPackage": false,
   "directoryAcceptanceClaimed": false,
   "globalCliFeaturesChanged": false,
-  "comparisonReleaseVersion": "0.1.45",
-  "comparisonSourceCommit": "48ca455136b70be9786d3a1a402f2b41716e566d",
+  "comparisonReleaseVersion": "0.1.46",
+  "comparisonSourceCommit": "4aab3bdd040aab2f7e04814bbf429296bd996d84",
   "currentBrandSha256": "6e0deb0ec084eeee2a73ed7e1b49e9dfe8a33a1eb3fe14c6b9517584ce789b36",
   "brandSource": "https://ohmyho.st/brand/assets/logo-on-black.png"
 }
