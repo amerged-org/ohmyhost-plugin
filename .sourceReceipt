@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.35",
+  "version": "0.1.45",
   "variant": "claude-directory-remote-only",
   "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
   "canonicalReleaseVersion": "0.1.31",
   "publicPluginSourceParent": "f0635d35be1cd1f5c690e4bef5631210767b5d1a",
-  "updateScope": "Restore current black-background brand icon and update remote access and troubleshooting guidance against the live MCP catalog and 0.1.44 public client release; the remote endpoint and legal files are unchanged.",
+  "updateScope": "Align the plugin to the public client release 0.1.45 and review the remote guidance against its live MCP catalog: the new database watch tools are outside the four workflows, and the operation_get read that the deploy and troubleshooting workflows rely on now finds deployment, source and project operations; the remote endpoint, the Skill texts and the legal files are unchanged.",
   "skills": 4,
   "allSkillsDerived": true,
   "exactCanonicalSkills": 0,
@@ -65,8 +65,8 @@
   "reviewerCredentialsInPackage": false,
   "directoryAcceptanceClaimed": false,
   "globalCliFeaturesChanged": false,
-  "comparisonReleaseVersion": "0.1.44",
-  "comparisonSourceCommit": "f533a9a50db8322cf5b8505628f13d5fb5fdfba9",
+  "comparisonReleaseVersion": "0.1.45",
+  "comparisonSourceCommit": "48ca455136b70be9786d3a1a402f2b41716e566d",
   "currentBrandSha256": "6e0deb0ec084eeee2a73ed7e1b49e9dfe8a33a1eb3fe14c6b9517584ce789b36",
   "brandSource": "https://ohmyho.st/brand/assets/logo-on-black.png"
 }
