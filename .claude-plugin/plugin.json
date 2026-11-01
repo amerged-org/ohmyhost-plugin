@@ -1,8 +1,8 @@
 {
   "name": "ohmyhost",
   "displayName": "ohmyho.st",
-  "version": "0.1.47",
-  "description": "Build websites, forms, portals and web apps directly in Claude. Preview and publish with hosting, a shareable URL and a database when needed. A Lovable alternative, right in your chat.",
+  "version": "0.1.48",
+  "description": "Build a Lovable website directly in Claude. Create forms, client portals and web apps, then preview and publish with hosting, a shareable URL and a database when needed.",
   "author": {
     "name": "Amerged B.V.",
     "url": "https://ohmyho.st"
