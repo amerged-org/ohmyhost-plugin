@@ -19,7 +19,7 @@
   "privacyPolicyUrl": "https://ohmyho.st/privacy",
   "termsOfServiceUrl": "https://ohmyho.st/terms",
   "metadata": {
-    "sourceCommit": "65090021f0711e571db1465d14194a6080703a7a",
+    "sourceCommit": "c1573efe2cacf525b8e5045f3d0628f4928f1005",
     "release": "0.1.47",
     "variant": "claude-directory-remote-only"
   }

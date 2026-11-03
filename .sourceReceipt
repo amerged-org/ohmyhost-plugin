@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "version": "0.1.50",
   "variant": "claude-directory-remote-only",
-  "canonicalSourceCommit": "65090021f0711e571db1465d14194a6080703a7a",
+  "canonicalSourceCommit": "c1573efe2cacf525b8e5045f3d0628f4928f1005",
   "canonicalReleaseVersion": "0.1.47",
   "publicPluginSourceParent": "bb750a9d17f786c135db2bdd1ce3c62c7288ffb6",
-  "updateScope": "Review the four Claude remote-only workflows against canonical source 65090021f0711e571db1465d14194a6080703a7a targeting client release 0.1.47. Preserve self-contained server-side AI gateway guidance, actual-cost charging, authoritative EU metadata checks and pending realtime acceptance. Keep the remote endpoint, existing directory listing wording, legal files and branding. Directory submission and acceptance are separate from this source update.",
+  "updateScope": "Review the four Claude remote-only workflows against canonical source c1573efe2cacf525b8e5045f3d0628f4928f1005 targeting client release 0.1.47. Preserve self-contained server-side AI gateway guidance, actual-cost charging, authoritative EU metadata checks and pending realtime acceptance. Keep the remote endpoint, existing directory listing wording, legal files and branding. Directory submission and acceptance are separate from this source update.",
   "skills": 4,
   "allSkillsDerived": true,
   "exactCanonicalSkills": 0,
   "derivedSkills": [
     {
       "path": "skills/ohmyhost-get-started/SKILL.md",
-      "canonicalSourceCommit": "65090021f0711e571db1465d14194a6080703a7a",
+      "canonicalSourceCommit": "c1573efe2cacf525b8e5045f3d0628f4928f1005",
       "canonicalSha256": "ab19e99c77c4bf3e57d8c9ad07fbfafa89c45b6ec8472b186ee9b057621c6327",
       "derivedSha256": "b94a1852dfa1f26847429e1e70eae9fe73e3cf1e2fd14342aa4a899828326973",
       "exactCanonicalBytes": false,
@@ -20,7 +20,7 @@
     },
     {
       "path": "skills/ohmyhost-build-portable-app/SKILL.md",
-      "canonicalSourceCommit": "65090021f0711e571db1465d14194a6080703a7a",
+      "canonicalSourceCommit": "c1573efe2cacf525b8e5045f3d0628f4928f1005",
       "canonicalSha256": "a6eca0c5b5d19ac8421290e1462676325cb37e862ba6c8c2026cd0568a26da07",
       "derivedSha256": "01a2b8b97b8d646aafc32ad3574f1cf8c24775a01ce570d62711bb94b04def16",
       "exactCanonicalBytes": false,
@@ -28,7 +28,7 @@
     },
     {
       "path": "skills/ohmyhost-deploy/SKILL.md",
-      "canonicalSourceCommit": "65090021f0711e571db1465d14194a6080703a7a",
+      "canonicalSourceCommit": "c1573efe2cacf525b8e5045f3d0628f4928f1005",
       "canonicalSha256": "fe6374137f127416fce0c62f606c486e078e81a75b0fa33e2efb34d9d831909f",
       "derivedSha256": "c337bac079f353190e09dc93b839e959014c7fc75d937875a77c30e9b03594a2",
       "exactCanonicalBytes": false,
@@ -36,7 +36,7 @@
     },
     {
       "path": "skills/ohmyhost-troubleshoot-deployment/SKILL.md",
-      "canonicalSourceCommit": "65090021f0711e571db1465d14194a6080703a7a",
+      "canonicalSourceCommit": "c1573efe2cacf525b8e5045f3d0628f4928f1005",
       "canonicalSha256": "1c8300ca20aa81cf012bd81132113e97f04b4f58e777e50b7c43a993ecfd000b",
       "derivedSha256": "e45e6e80b700f262f30558dae360248f3b7b43a0ab15d8d3a575d5ac98a765b9",
       "exactCanonicalBytes": false,
@@ -66,13 +66,13 @@
   "directoryAcceptanceClaimed": false,
   "globalCliFeaturesChanged": false,
   "comparisonReleaseVersion": "0.1.47",
-  "comparisonSourceCommit": "65090021f0711e571db1465d14194a6080703a7a",
+  "comparisonSourceCommit": "c1573efe2cacf525b8e5045f3d0628f4928f1005",
   "currentBrandSha256": "6e0deb0ec084eeee2a73ed7e1b49e9dfe8a33a1eb3fe14c6b9517584ce789b36",
   "brandSource": "https://ohmyho.st/brand/assets/logo-on-black.png",
   "supportingCanonicalResources": [
     {
       "path": "skills/ohmyhost-build-portable-app/references/ai.md",
-      "sourceCommit": "65090021f0711e571db1465d14194a6080703a7a",
+      "sourceCommit": "c1573efe2cacf525b8e5045f3d0628f4928f1005",
       "sha256": "f3e1ddb1736a4045498c691f6d1b7aa3e238e7773d583c8894e9824ac2c723e9",
       "packagedAsSeparateReference": false,
       "use": "AI contract adapted inline to the derived remote-only build Skill; no external behavioral instruction loading."
