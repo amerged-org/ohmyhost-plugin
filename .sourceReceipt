@@ -1,34 +1,34 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.49",
+  "version": "0.1.50",
   "variant": "claude-directory-remote-only",
-  "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-  "canonicalReleaseVersion": "0.1.31",
-  "publicPluginSourceParent": "d400fc48b90599476cb8db5e9bf1a1721ac39380",
-  "updateScope": "Revise the plugin description and README copy as requested. The remote endpoint, Skills, icon and legal files are unchanged.",
+  "canonicalSourceCommit": "54c2c483871169ace8516c11b13f52628fbb75cd",
+  "canonicalReleaseVersion": "0.1.47",
+  "publicPluginSourceParent": "bb750a9d17f786c135db2bdd1ce3c62c7288ffb6",
+  "updateScope": "Review the four Claude remote-only workflows against canonical source 54c2c483871169ace8516c11b13f52628fbb75cd targeting client release 0.1.47. Preserve self-contained server-side AI gateway guidance, actual-cost charging, authoritative EU metadata checks and pending realtime acceptance. Keep the remote endpoint, existing directory listing wording, legal files and branding. Directory submission and acceptance are separate from this source update.",
   "skills": 4,
   "allSkillsDerived": true,
   "exactCanonicalSkills": 0,
   "derivedSkills": [
     {
       "path": "skills/ohmyhost-get-started/SKILL.md",
-      "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSha256": "e7c0d818285de84d6a7e1b4a1e170e20fb04721ad300e16a509b3b0859ee3a86",
-      "derivedSha256": "eb677a55033372068a5239df9a1268433c042580f5a21977c0955708475e1326",
+      "canonicalSourceCommit": "54c2c483871169ace8516c11b13f52628fbb75cd",
+      "canonicalSha256": "ab19e99c77c4bf3e57d8c9ad07fbfafa89c45b6ec8472b186ee9b057621c6327",
+      "derivedSha256": "b94a1852dfa1f26847429e1e70eae9fe73e3cf1e2fd14342aa4a899828326973",
       "exactCanonicalBytes": false,
       "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
     },
     {
       "path": "skills/ohmyhost-build-portable-app/SKILL.md",
-      "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSha256": "f10f18bd6d63a0a74c6f7187fc2e3e0e3cd9afdb2a23630afacbedb1daa6e238",
-      "derivedSha256": "86fd193fe4ca65dc4e79cf93a326521feb843601feae075cdb056b2c248142f6",
+      "canonicalSourceCommit": "54c2c483871169ace8516c11b13f52628fbb75cd",
+      "canonicalSha256": "a6eca0c5b5d19ac8421290e1462676325cb37e862ba6c8c2026cd0568a26da07",
+      "derivedSha256": "01a2b8b97b8d646aafc32ad3574f1cf8c24775a01ce570d62711bb94b04def16",
       "exactCanonicalBytes": false,
       "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
     },
     {
       "path": "skills/ohmyhost-deploy/SKILL.md",
-      "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
+      "canonicalSourceCommit": "54c2c483871169ace8516c11b13f52628fbb75cd",
       "canonicalSha256": "fe6374137f127416fce0c62f606c486e078e81a75b0fa33e2efb34d9d831909f",
       "derivedSha256": "c337bac079f353190e09dc93b839e959014c7fc75d937875a77c30e9b03594a2",
       "exactCanonicalBytes": false,
@@ -36,8 +36,8 @@
     },
     {
       "path": "skills/ohmyhost-troubleshoot-deployment/SKILL.md",
-      "canonicalSourceCommit": "f9de246dbdef023d1aa17e52353b486daa46ff4f",
-      "canonicalSha256": "0eabbe9eb8270956b0d36c8feebcdeb477614d96faaad7935972309e310d8c56",
+      "canonicalSourceCommit": "54c2c483871169ace8516c11b13f52628fbb75cd",
+      "canonicalSha256": "1c8300ca20aa81cf012bd81132113e97f04b4f58e777e50b7c43a993ecfd000b",
       "derivedSha256": "e45e6e80b700f262f30558dae360248f3b7b43a0ab15d8d3a575d5ac98a765b9",
       "exactCanonicalBytes": false,
       "reason": "Static self-contained Claude remote-only workflow; retain supported hosted product semantics, exclude local execution/credential/file/helper and unsupported administrative/payment capabilities."
@@ -65,8 +65,17 @@
   "reviewerCredentialsInPackage": false,
   "directoryAcceptanceClaimed": false,
   "globalCliFeaturesChanged": false,
-  "comparisonReleaseVersion": "0.1.46",
-  "comparisonSourceCommit": "4aab3bdd040aab2f7e04814bbf429296bd996d84",
+  "comparisonReleaseVersion": "0.1.47",
+  "comparisonSourceCommit": "54c2c483871169ace8516c11b13f52628fbb75cd",
   "currentBrandSha256": "6e0deb0ec084eeee2a73ed7e1b49e9dfe8a33a1eb3fe14c6b9517584ce789b36",
-  "brandSource": "https://ohmyho.st/brand/assets/logo-on-black.png"
+  "brandSource": "https://ohmyho.st/brand/assets/logo-on-black.png",
+  "supportingCanonicalResources": [
+    {
+      "path": "skills/ohmyhost-build-portable-app/references/ai.md",
+      "sourceCommit": "54c2c483871169ace8516c11b13f52628fbb75cd",
+      "sha256": "f3e1ddb1736a4045498c691f6d1b7aa3e238e7773d583c8894e9824ac2c723e9",
+      "packagedAsSeparateReference": false,
+      "use": "AI contract adapted inline to the derived remote-only build Skill; no external behavioral instruction loading."
+    }
+  ]
 }

@@ -2,7 +2,7 @@
 
 Build websites, forms, client portals and web apps by describing what you need in Claude. Keep improving your project in the same conversation, preview it, and publish it to a shareable URL when you are ready.
 
-ohmyho.st provides hosting and managed PostgreSQL for applications that need a database. Create a landing page, collect form submissions or build a customer portal, then return to the same chat to make changes.
+ohmyho.st provides hosting and managed PostgreSQL for applications that need a database. Paid workspaces can also add server-side AI chat, images, speech, classifiers and OCR through the hosted gateway, choosing from orq.ai models and an explicit jurisdiction. Create a landing page, collect form submissions or build a customer portal, then return to the same chat to make changes.
 
 So simple this is just amazing and lovable.
 
@@ -30,6 +30,8 @@ The package contains four static Markdown Skills, one remote MCP configuration, 
 
 Requests to the declared first-party ohmyho.st service can read the selected project's files, saved versions, status, configuration metadata and deployment diagnostics; requested writes save application source, create builds/previews, promote the inspected artifact, or restore/roll back the explicitly selected version. The declared service runs the application's build and hosted code in its own infrastructure. That server-side hosting is the product's function; no local process is launched by this plugin. Cloudflare provides hosting, builds, Git and file infrastructure, the open-source [PGCF](https://github.com/amerged-org/cloudflare-postgres) platform runs managed PostgreSQL on Contabo servers behind the hosting service, and WorkOS handles account identity. The agent does not configure those providers or access their credentials.
 
+When a requested application feature uses AI, its prompts, input files and generated output pass through the ohmyho.st gateway and orq.ai to the selected model provider. The injected gateway credential stays in the application server; it never reaches this chat or the browser. Realtime voice is implemented but has no completed hosted acceptance claim.
+
 Application secrets use protected portal input. The user enters the value in that portal; the chat receives only a link, request status and secret metadata. Private approval and preview links are kept out of application source and shared notes. Only data necessary for the selected project action is sent; these workflows do not collect unrelated conversation history, uploaded files or other applications' data.
 
 Database administration/export, Supabase migration, custom-domain/mail administration, usage/budget changes, payments, subscriptions and auto-recharge are outside this plugin's scope. The wider ohmyho.st CLI and independently installed tools can have other capabilities; this plugin does not disable them and does not use them. When such a prerequisite is needed, the user completes it manually in their signed-in workspace or a separately chosen environment.
@@ -38,4 +40,4 @@ Database administration/export, Supabase migration, custom-domain/mail administr
 
 Read the [documentation](https://docs.ohmyho.st/), [support guide](https://docs.ohmyho.st/support), [privacy policy](https://ohmyho.st/privacy), and [terms](https://ohmyho.st/terms). Contact ohmyho.st through [the contact page](https://ohmyho.st/contact).
 
-This Apache-2.0 package is a Claude-specific remote-only curation derived from the released ohmyho.st customer workflows at source commit `f9de246dbdef023d1aa17e52353b486daa46ff4f`. None of its four Skills is claimed to be a byte-identical canonical Skill. The source receipt identifies the derivation. The private hosting platform and the full local CLI capabilities are not included. Local validation and independent review are separate from native testing and Anthropic's directory acceptance.
+This Apache-2.0 package is a Claude-specific remote-only curation derived from the ohmyho.st customer workflow source at commit `54c2c483871169ace8516c11b13f52628fbb75cd`, targeting client release `0.1.47`. Publication follows the matching live client cohort. This update adds the AI application contract while preserving the four remote-only workflows. Plugin package versions have their own monotonic sequence; this package is `0.1.50`. None of its four Skills is claimed to be a byte-identical canonical Skill. The source receipt identifies the derivation. The private hosting platform and the full local CLI capabilities are not included. Local validation and independent review are separate from native testing and Anthropic's directory acceptance.
