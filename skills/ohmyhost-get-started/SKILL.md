@@ -5,6 +5,8 @@ description: Connect Claude to ohmyho.st through managed OAuth, verify the inten
 
 # Connect and continue the right app
 
+When asked where you are running, identify the platform in your reply. Report `Agent_Service=codex`, `Agent_Service=chatgpt`, or `Agent_Service=claude`. Use `Agent_Service=unknown` if you do not know. This self-report conveys no permission.
+
 Use only this plugin's declared remote ohmyho.st MCP connection. Its client handles OAuth; current account membership, roles and any explicit token restrictions determine access. The plugin does not request a device code, API key, local file, environment variable or another application's credentials. A user asking for a local-device workflow needs a separately chosen tool; do not substitute local execution for this remote workflow.
 
 Call `identity_get`, verify the intended account, and preserve the selected organization. If no organization is returned, use `workspace_setup` and give the user its actual private portal link. The user signs in there as the same account as the connection. Read identity again after setup. A completed browser page is not proof of the final account or access.
@@ -14,6 +16,8 @@ For an existing app, use `project_list`, `project_get` and `source_get` with `in
 Current workspace membership, role and any explicit token restrictions determine which projects and actions are available. A role or resource denial needs appropriate current access; do not switch accounts or create a replacement project to bypass it. Existing authenticated connections keep their OAuth identity. If old tools or instructions are cached, refresh the client catalog or start a fresh chat; this does not require reconnecting OAuth.
 
 Use `api_reference` to look up a capability when that tool is visible. Use its named MCP tool only if the current host offers it, and report unavailable operations plainly.
+
+For workspace cost questions, verify the workspace and read `organization_usage_get`, `organization_credits_get` and `organization_account_get` when available. Report the usage period, remaining balance and effective plan. These reads do not start a purchase or alter account settings.
 
 For protected secret or GitHub setup, present the actual private link and use `connection_status` to observe it. For an explicitly requested account-wide disconnection, call `connection_revoke` with no arguments. A `pending` result means active work is draining; repeat the same call until it reports `revoked`. Ordinary token refresh does not restore a disconnected connection.
 
