@@ -27,6 +27,10 @@ Only on the user's explicit GitHub-to-managed switch request, explain the source
 
 `source_versions` and `source_diff` inspect concrete saved commits. On a requested source restore, use `source_restore` with the current generation/head and chosen earlier commit; observe its operation and reread the new head. This creates a new version without erasing history. Source restore and deployment rollback are separate actions.
 
+## Live Project Preview
+
+For a Live Project Preview, confirm the project and Dev or Prod environment. Use `preview_get` to read status or `preview_open` to open the private stable preview. Saved source changes appear without a deployment. Keep the preview URL private. Stop or rotate only when specifically requested, using `preview_stop` or `preview_rotate` with the same idempotency key on an uncertain retry. Stop removes preview backups and preserves the URL. Rotation cuts off the old URL and active connections. A preview is not production publication.
+
 ## Build, inspect and publish
 
 For the confirmed commit, call `deployment_plan` with `environment: "dev"`. Review its actual costs, requirements and effects within the user's request. Use `secret_input_request` when required, giving the user its protected portal link; inspect only the returned status and secret metadata. Secrets are environment-specific and are not copied from Dev to Prod. If hosting needs credits or a capability not offered by this plugin, direct the user to their signed-in workspace; do not start payments or invent an administration tool.
