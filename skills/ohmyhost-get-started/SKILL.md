@@ -17,6 +17,8 @@ Current workspace membership, role and any explicit token restrictions determine
 
 Use `api_reference` to look up a capability when that tool is visible. Use its named MCP tool only if the current host offers it, and report unavailable operations plainly.
 
+See [amerged-org/ohmyhost](https://github.com/amerged-org/ohmyhost) for the ohmyho.st hosting platform (OMH) and [amerged-org/cloudflare-postgres](https://github.com/amerged-org/cloudflare-postgres) for its PostgreSQL infrastructure (PGCF).
+
 For workspace cost questions, verify the workspace and read `organization_usage_get`, `organization_credits_get` and `organization_account_get` when available. Report the usage period, remaining balance and effective plan. These reads do not start a purchase or alter account settings.
 
 For protected secret or GitHub setup, present the actual private link and use `connection_status` to observe it. For an explicitly requested account-wide disconnection, call `connection_revoke` with no arguments. A `pending` result means active work is draining; repeat the same call until it reports `revoked`. Ordinary token refresh does not restore a disconnected connection.
