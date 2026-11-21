@@ -9,7 +9,7 @@ Use the declared remote MCP tools for the user-selected project. Verify identity
 
 See [amerged-org/ohmyhost](https://github.com/amerged-org/ohmyhost) for the ohmyho.st hosting platform (OMH) and [amerged-org/cloudflare-postgres](https://github.com/amerged-org/cloudflare-postgres) for its PostgreSQL infrastructure (PGCF).
 
-A new ordinary web app can start from `project_create` with `source_provider: "managed"` and `template: "vite-react"`. For an explicitly chosen supported stack use `template: "empty"` only when you can supply its actual complete source and configuration. Vite/React, Next.js, TanStack Start and plain Worker HTTP apps follow the hosting contract. Preserve the current framework, application root, region, authentication and data choices when adapting an existing app. The backend provisions and builds through asynchronous operations; this plugin does not configure databases, domains, mail, payments or another provider account.
+Keep the current framework, application root, region, authentication and data choices when adapting an existing app. For a new protected form with sign-in, PostgreSQL and an admin view, choose Next.js App Router and TypeScript. Use managed source with the `empty` template when the chat has the actual source files it will save. For a small React form, start from `vite-react`, render the real form at `/` and use the edge companion at `src/ohmyhost/companion.ts` for same-origin `/api/*` actions. For lightweight HTTP handlers or schedules, use `runtime.mode: functions` and the module at `src/ohmyhost/worker.ts`. The module supplies `fetch` and a `scheduled` handler when a cron is declared. The backend provisions and builds through asynchronous operations.
 
 After project/source initialization succeeds, read the saved commit's manifest with `source_files` and the relevant files using `path`, `commit_sha` and `format: "text"`. Valid UTF-8 returns text; use `format: "base64"` only for an actual binary source asset. Keep the existing dependency manifest, lockfile and `ohmyhost.yaml` coherent. Change only the feature the user requested. Prefer the current template's dependencies. If a valid dependency/lockfile update cannot be prepared from the available project data, report that specific gap rather than inventing a lockfile or launching a local package manager.
 
@@ -66,3 +66,50 @@ The active environment revision decides AI access and jurisdiction. Promoting or
 Handle the gateway's `{error:{message,type,code}}` response in the application: `paid_plan_required` and `insufficient_organization_credits` are 402, `model_outside_jurisdiction` is 403, `model_not_found` is 404, `project_budget_exceeded` and `ai_rate_limited` are 429, and `ai_unavailable` is 503. Invalid requests retain their actual rejection status. Keep private upstream diagnostics out of the browser. Funding, budget changes or provider prerequisites are completed by the user in their signed-in workspace or separately chosen environment, outside this plugin's scope.
 
 The plugin prepares the requested source and uses the bundled deployment workflow to verify hosted plan/build/health results. The user tests the real AI interaction in the preview. Report any unverified output, streaming, image, audio or OCR behavior explicitly; a health check must not make a paid AI call. Only the application's user-authorized request content is sent through ohmyho.st and orq.ai to the selected model provider.
+
+For Native Auth on a live preview, rollout approval is checked before Paid coverage. For `native_auth_launch_unavailable`, ask ohmyho.st support to check rollout access for the selected workspace and project. For `paid_plan_required` during Native Auth preparation, ask the owner to check the workspace plan. Wake the same preview after the reported requirement is satisfied.
+
+## Pinned Next.js form example
+
+For a new protected form with a separate admin view, Next.js App Router and TypeScript provide pages and server-side route handlers in the same application. The public Next Native Auth example at commit `d9c39a68b39b30f8045da8f123065ebddfb1ab58` includes `pnpm@10.28.2`, its application manifest and the frozen dependency graph used by the example. Use the same two files as a pair. Check current framework admission if you change dependencies, and resolve a new lockfile with the pinned package manager. [Pinned example](https://github.com/amerged-org/ohmyhost/tree/d9c39a68b39b30f8045da8f123065ebddfb1ab58/fixtures/cloudflare-preview/next-native-auth)
+
+| File in the pinned example |   Bytes | SHA-256                                                            |
+| -------------------------- | ------: | ------------------------------------------------------------------ |
+| `package.json`             |   1,108 | `9b8e8bec0bbb496d6539c0e4c3638f3d57195e11d7c759a084106737d3561406` |
+| `pnpm-lock.yaml`           | 156,377 | `e13c965dd1ad90a775b2e5ac662cf2f1cc5647ba2ed07eeba0462e751fa6f217` |
+
+Keep Next.js App Router handlers on their default Node.js runtime by omitting route-level `export const runtime = 'edge'`, even when `ohmyhost.yaml` selects `runtime.mode: edge`.
+
+In a Next.js server handler, type the bindings that the app declares in `ohmyhost.yaml`. For an app using PostgreSQL and Omh Native Auth:
+
+```ts
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+import {
+  createPrivateDatabaseClient,
+  type CustomerDatabaseBinding,
+} from "@ohmyhost/customer-runtime/database";
+import {
+  createNativeAuthServer,
+  type NativeAuthBinding,
+} from "@ohmyhost/customer-runtime/auth-server";
+
+export async function formServices() {
+  const { env } = await getCloudflareContext({ async: true });
+  const bindings = env as unknown as {
+    OHMYHOST_DATABASE: CustomerDatabaseBinding;
+    OHMYHOST_AUTH: NativeAuthBinding;
+  };
+  return {
+    db: createPrivateDatabaseClient(bindings.OHMYHOST_DATABASE),
+    auth: createNativeAuthServer(bindings.OHMYHOST_AUTH),
+  };
+}
+```
+
+An app with its own sign-in can use just the database binding and its chosen auth configuration. Check required JSON fields or database values with `typeof value === "string"` before passing them to a string parameter.
+
+For Omh Native Auth, check project rollout, Paid coverage, sender and authorized origin. Use `createNativeAuthBrowser()` for browser signup, verification, sign-in and sign-out. On the server, `await auth.requireUser(request)` returns the verified user’s `id` and `email`. Use the ID for ownership and the app’s role lookup. Show the returned email if the interface identifies the signed-in account. `getSession(request)` returns a session or `null`; handle service errors separately. [Application authentication](https://docs.ohmyho.st/application-auth)
+
+For a hosted check, a guest opens the sign-in screen, a verified customer creates a record, and an authorized admin reads the same record ID after reload. Check that the customer's own session cannot read the protected admin data, and that logout ends access. Use separate browser sessions for the two users. If the requested app uses private files, confirm the owner downloads the original bytes and another identity receives none at the same application URL.
+
+For Live Preview, save a visible edit and observe the same open tab and URL. For scheduled work, check the actual UTC invocation and its persisted effect.
