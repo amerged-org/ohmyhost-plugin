@@ -1,11 +1,13 @@
 ---
 name: ohmyhost-deploy
-description: Save managed app versions, deploy an exact managed or existing GitHub commit, inspect its Dev preview, and publish or roll back an authorized artifact through remote ohmyho.st MCP tools. Reuse the saved project and source; switch only on explicit request.
+description: Save managed app versions, open a private live preview, and deploy, publish or roll back on request through remote ohmyho.st MCP tools. Reuse the saved project and source and switch only on explicit request.
 ---
 
 # Version, preview and publish through ohmyho.st
 
 Use only the declared remote MCP connection and bundled access workflow. Read `project_get`, `project_context_get`, `project_status` and `source_get` with `include_binding: true`. Preserve the verified account, organization, project, source binding and generation. The product name or chat platform does not select a different source.
+
+Use the user's language, two short sentences, one link and at most one question. Share IDs, commit hashes, state values, codes and tool names only on request.
 
 ## Choose or continue the source
 
@@ -27,21 +29,29 @@ Only on the user's explicit GitHub-to-managed switch request, explain the source
 
 `source_versions` and `source_diff` inspect concrete saved commits. On a requested source restore, use `source_restore` with the current generation/head and chosen earlier commit; observe its operation and reread the new head. This creates a new version without erasing history. Source restore and deployment rollback are separate actions.
 
-## Live Project Preview
+## Show the app to the user
 
-For a Live Project Preview, confirm the project and Dev or Prod environment. Use `preview_get` to read status or `preview_open` to open the private stable preview. Saved source changes appear without a deployment. Keep the preview URL private. Stop or rotate only when specifically requested, using `preview_stop` or `preview_rotate` with the same idempotency key on an uncertain retry. Stop removes preview backups and preserves the URL. Rotation cuts off the old URL and active connections. A preview is not production publication.
+Call `preview_open` after each successful save, when continuing an existing project even if a save is unnecessary, or when the user asks to see the app. Read the project's workspace plan with `organization_account_get`. Use `environment: dev` for `plan: paid` and `environment: prod` for `plan: free`. If plan access is denied, ask the workspace Owner to confirm the plan.
+
+While `ready_to_show` is false, poll `preview_get` for the same project and environment about every 10 seconds for up to two minutes. Follow `next_step` and relay `say_to_user` in the user's language, applying these handoff rules to any link or question. If the preview still needs time, say it is getting ready.
+
+A database or sign-in app needs a first deployment in that environment before its preview can load data. If the environment has no deployment, explain that requirement in one sentence. For Prod, mention that the site will go live. After the user asks or agrees to that deployment, deploy once and check the same live preview again.
+
+When `ready_to_show` is true and any required first deployment has succeeded, share the returned preview `url`. On the first handoff, ask whether the user wants to see the app. For later saves, say what changed and share the same link once the saved version is ready. Omit the question on later handoffs. Keep private links out of source, notes and logs.
+
+Use `preview_stop` or `preview_rotate` only when requested, with the same idempotency key on an uncertain retry. Stop removes preview backups and preserves the URL. Rotation cuts off the old URL and active connections.
 
 ## Build, inspect and publish
 
-For the confirmed commit, call `deployment_plan` with `environment: "dev"`. Review its actual costs, requirements and effects within the user's request. Use `secret_input_request` when required, giving the user its protected portal link; inspect only the returned status and secret metadata. Secrets are environment-specific and are not copied from Dev to Prod. If hosting needs credits or a capability not offered by this plugin, direct the user to their signed-in workspace; do not start payments or invent an administration tool.
+Deploy or publish only on the user's request or agreement. A request to deploy, publish or go live counts. Call `deployment_plan` for the exact saved commit and the requested environment. Review its actual costs, requirements and effects within the user's request. Use `secret_input_request` when required, give the user its protected portal link, and inspect only the returned status and secret metadata. Set required secrets for each target environment. If funding or another prerequisite blocks deployment, direct the user to their signed-in workspace.
 
-Start `deployment_create` with the exact plan ID and one retained non-secret request identifier. Follow the returned `operation_get` at the suggested interval. On failure, read `deployment_get` and `deployment_logs` for the actual deployment rather than starting duplicate builds. After success, read `project_status` for the actual Dev URL. Public Dev opens directly. For protected Dev, give the user the private `share_url` from `project_dev_share_link_get`; A requested one-use preview entry can use `project_dev_access_create`; give its returned link to the user and do not issue another unused ticket. Keep access links out of source and shared notes.
+Start `deployment_create` with the exact plan ID and one retained non-secret request identifier. Follow the returned `operation_get` at the suggested interval. On failure, read `deployment_get` and `deployment_logs` for the actual deployment before retrying. After success, read `project_status` to verify the deployed version. When the user asks for the deployed Dev site, share only the `share_url` from `project_dev_share_link_get`. Explain if it is unavailable. For a requested Prod deployment, share the verified public address.
 
 The user inspects the preview in their browser. Use MCP deployment/status results for server-side completion and health evidence; ask the user to confirm the requested visible interactions when publication depends on that review. This plugin invokes no external browser, program or interpreter. A server-side health result alone does not establish that every app interaction works; report that limitation instead of claiming an agent-run acceptance test.
 
-Publish only when the user requested it and the current role and token permit it. Read `promotion_plan` for the verified Dev deployment and use `deployment_promote` with that same deployment ID, exact ETag/precondition, confirmation token and retained request identifier. This promotes the tested artifact without a new build. Follow the accepted operation and verify actual production status. Shared Dev/Prod data uses Dev followed by promotion; a separately requested direct Prod deployment is supported only when its current data mode and plan allow it.
+If the requested deployment already went to Prod, verify that operation. To publish a verified Dev deployment with the required role and token, read `promotion_plan` and use `deployment_promote` with the same deployment ID, exact ETag/precondition, confirmation token and retained request identifier. Follow the accepted operation, verify production status and share the public address. Use an exact-commit Prod plan when the user requests direct deployment and the plan supports it, including with shared data.
 
-For an explicitly requested artifact rollback, select the earlier deployment from `deployment_list`, read `rollback_plan`, and use `deployment_rollback` with its exact guards and retained request identifier. Rollback changes the deployed artifact; it does not reverse database migrations or restore source history. After a stale/expired plan, read a fresh plan before a new attempt. Report the resulting URL, saved version and actual operation outcome in plain language.
+For an explicitly requested artifact rollback, select the earlier deployment from `deployment_list`, read `rollback_plan`, and use `deployment_rollback` with its exact guards and retained request identifier. Rollback changes the deployed artifact; it does not reverse database migrations or restore source history. After a stale/expired plan, read a fresh plan before a new attempt. Report the verified result in plain language.
 
 For `auth.provider: omh-native`, a deployment plan or request can return `native_auth_launch_unavailable` (HTTP 409). Ask ohmyho.st support to confirm rollout access for the existing workspace and project, then plan the saved commit again. Check the selected environment’s Paid access, verified sender and approved application origin.
 

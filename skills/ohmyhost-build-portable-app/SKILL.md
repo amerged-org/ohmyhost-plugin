@@ -21,7 +21,7 @@ A revision conflict requires reading the current commit, reviewing the differenc
 
 For required application secrets, call `secret_input_request` once for the exact project and environment. Use `names` to group up to ten distinct names or `name` for one. Give the private form link only to the person entering the values. After a valid Save, check `connection_status`: report saved, failed and unconfirmed names separately. Request a new link for failed names and verify unconfirmed writes before retrying. For a single-name request, verify metadata with `secrets_list` before saying it was saved. Keep values out of the conversation and tool arguments.
 
-Use the bundled deploy Skill to build and inspect that exact saved version. The declared hosting service runs the app's build and application code in its own infrastructure; the plugin does not run a shell, interpreter, package installer or helper program on the user's machine. Fix reported source errors through another guarded managed commit and verify the resulting preview before saying the feature works.
+After a successful save, follow **Show the app to the user** in the bundled deploy Skill for the exact saved version. Fix reported source errors with another guarded managed commit and check its live preview. The hosting service runs builds and application code in its own infrastructure. The plugin uses remote MCP for preview and deployment, and the user checks the app in their browser.
 
 ## AI in the hosted application
 
@@ -65,7 +65,7 @@ The active environment revision decides AI access and jurisdiction. Promoting or
 
 Handle the gateway's `{error:{message,type,code}}` response in the application: `paid_plan_required` and `insufficient_organization_credits` are 402, `model_outside_jurisdiction` is 403, `model_not_found` is 404, `project_budget_exceeded` and `ai_rate_limited` are 429, and `ai_unavailable` is 503. Invalid requests retain their actual rejection status. Keep private upstream diagnostics out of the browser. Funding, budget changes or provider prerequisites are completed by the user in their signed-in workspace or separately chosen environment, outside this plugin's scope.
 
-The plugin prepares the requested source and uses the bundled deployment workflow to verify hosted plan/build/health results. The user tests the real AI interaction in the preview. Report any unverified output, streaming, image, audio or OCR behavior explicitly; a health check must not make a paid AI call. Only the application's user-authorized request content is sent through ohmyho.st and orq.ai to the selected model provider.
+Use the bundled deploy Skill to open the live preview and check plan, build and health results when deployment is requested. The user tests the real AI interaction in the preview. Report any unverified output, streaming, image, audio or OCR behavior explicitly; a health check must not make a paid AI call. Only the application's user-authorized request content is sent through ohmyho.st and orq.ai to the selected model provider.
 
 For Native Auth on a live preview, rollout approval is checked before Paid coverage. For `native_auth_launch_unavailable`, ask ohmyho.st support to check rollout access for the selected workspace and project. For `paid_plan_required` during Native Auth preparation, ask the owner to check the workspace plan. Wake the same preview after the reported requirement is satisfied.
 
