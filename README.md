@@ -40,4 +40,4 @@ Database administration/export, Supabase migration, custom-domain/mail administr
 
 Read the [documentation](https://docs.ohmyho.st/), [support guide](https://docs.ohmyho.st/support), [privacy policy](https://ohmyho.st/privacy), and [terms](https://ohmyho.st/terms). Contact ohmyho.st through [the contact page](https://ohmyho.st/contact).
 
-This Apache-2.0 package tracks ohmyho.st client release `0.1.75` from platform commit `7e5356ee7060b16bdf7e75853d336ee9e7e9e597`. The four Claude-specific workflows include named operation discovery, private Live Project Preview after each save and grouped secret entry. Claude deploys or publishes when you request it.
+This Apache-2.0 package tracks ohmyho.st client release `0.1.77` from platform commit `cc6af2760631318ea9412094176627ace9553d86`. The four Claude-specific workflows include named operation discovery, private Live Project Preview after each save and grouped secret entry. Claude deploys or publishes when you request it.

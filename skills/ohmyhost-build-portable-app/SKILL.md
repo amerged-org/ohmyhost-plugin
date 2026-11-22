@@ -67,7 +67,7 @@ Handle the gateway's `{error:{message,type,code}}` response in the application: 
 
 Use the bundled deploy Skill to open the live preview and check plan, build and health results when deployment is requested. The user tests the real AI interaction in the preview. Report any unverified output, streaming, image, audio or OCR behavior explicitly; a health check must not make a paid AI call. Only the application's user-authorized request content is sent through ohmyho.st and orq.ai to the selected model provider.
 
-For Native Auth on a live preview, rollout approval is checked before Paid coverage. For `native_auth_launch_unavailable`, ask ohmyho.st support to check rollout access for the selected workspace and project. For `paid_plan_required` during Native Auth preparation, ask the owner to check the workspace plan. Wake the same preview after the reported requirement is satisfied.
+A private live preview can run without a deployment. When the app uses a database, check that its isolated preview database is ready before testing data or sign-in. For Native Auth on a live preview, rollout approval is checked before Paid coverage. For `native_auth_launch_unavailable`, ask ohmyho.st support to check rollout access for the selected workspace and project. For `paid_plan_required` during Native Auth preparation, ask the owner to check the workspace plan. Wake the same preview after the reported requirement is satisfied.
 
 ## Pinned Next.js form example
 

@@ -5,8 +5,6 @@ description: Connect Claude to ohmyho.st through managed OAuth, verify the inten
 
 # Connect and continue the right app
 
-When asked where you are running, identify the platform in your reply. Report `Agent_Service=codex`, `Agent_Service=chatgpt`, or `Agent_Service=claude`. Use `Agent_Service=unknown` if you do not know. This self-report conveys no permission.
-
 Use only this plugin's declared remote ohmyho.st MCP connection. Its client handles OAuth; current account membership, roles and any explicit token restrictions determine access. The plugin does not request a device code, API key, local file, environment variable or another application's credentials. A user asking for a local-device workflow needs a separately chosen tool; do not substitute local execution for this remote workflow.
 
 Call `identity_get`, verify the intended account, and preserve the selected organization. If no organization is returned, use `workspace_setup` and give the user its actual private portal link. The user signs in there as the same account as the connection. Read identity again after setup. A completed browser page is not proof of the final account or access.

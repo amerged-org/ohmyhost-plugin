@@ -31,13 +31,13 @@ Only on the user's explicit GitHub-to-managed switch request, explain the source
 
 ## Show the app to the user
 
-Call `preview_open` after each successful save, when continuing an existing project even if a save is unnecessary, or when the user asks to see the app. Read the project's workspace plan with `organization_account_get`. Use `environment: dev` for `plan: paid` and `environment: prod` for `plan: free`. If plan access is denied, ask the workspace Owner to confirm the plan.
+Free and Paid workspaces can open a private live preview without deploying. Call `preview_open` after each successful save, when continuing an existing project even if a save is unnecessary, or when the user asks to see the app. Read the workspace plan from `identity_get` or `organization_account_get` and check the project environments with `project_status`. Use `environment: dev` if the workspace is Paid and the project has Dev. Otherwise use `environment: prod`. If plan access is denied, ask the workspace Owner to confirm the plan.
 
 While `ready_to_show` is false, poll `preview_get` for the same project and environment about every 10 seconds for up to two minutes. Follow `next_step` and relay `say_to_user` in the user's language, applying these handoff rules to any link or question. If the preview still needs time, say it is getting ready.
 
-A database or sign-in app needs a first deployment in that environment before its preview can load data. If the environment has no deployment, explain that requirement in one sentence. For Prod, mention that the site will go live. After the user asks or agrees to that deployment, deploy once and check the same live preview again.
+A preview for a database or sign-in app cannot load data until its isolated preview database exists. Follow the returned guidance and explain any limitation. Deploy only when the user requests a deployment.
 
-When `ready_to_show` is true and any required first deployment has succeeded, share the returned preview `url`. On the first handoff, ask whether the user wants to see the app. For later saves, say what changed and share the same link once the saved version is ready. Omit the question on later handoffs. Keep private links out of source, notes and logs.
+When `ready_to_show` is true, share the returned preview `url`. On the first handoff, ask whether the user wants to see the app. For later saves, say what changed and share the same link once the saved version is ready. Omit the question on later handoffs. Keep private links out of source, notes and logs.
 
 Use `preview_stop` or `preview_rotate` only when requested, with the same idempotency key on an uncertain retry. Stop removes preview backups and preserves the URL. Rotation cuts off the old URL and active connections.
 
@@ -45,7 +45,7 @@ Use `preview_stop` or `preview_rotate` only when requested, with the same idempo
 
 Deploy or publish only on the user's request or agreement. A request to deploy, publish or go live counts. Call `deployment_plan` for the exact saved commit and the requested environment. Review its actual costs, requirements and effects within the user's request. Use `secret_input_request` when required, give the user its protected portal link, and inspect only the returned status and secret metadata. Set required secrets for each target environment. If funding or another prerequisite blocks deployment, direct the user to their signed-in workspace.
 
-Start `deployment_create` with the exact plan ID and one retained non-secret request identifier. Follow the returned `operation_get` at the suggested interval. On failure, read `deployment_get` and `deployment_logs` for the actual deployment before retrying. After success, read `project_status` to verify the deployed version. When the user asks for the deployed Dev site, share only the `share_url` from `project_dev_share_link_get`. Explain if it is unavailable. For a requested Prod deployment, share the verified public address.
+Start `deployment_create` with the exact plan ID and one retained non-secret request identifier. Follow the returned `operation_get` at the suggested interval. On failure, read `deployment_get` and `deployment_logs` for the actual deployment before retrying. After success, read `project_status` to verify the deployed version. The deployed Dev site is a private test site for Paid workspaces. When the user asks for it, share only the `share_url` from `project_dev_share_link_get`. Explain if it is unavailable. For a requested Prod deployment, share the verified public address.
 
 The user inspects the preview in their browser. Use MCP deployment/status results for server-side completion and health evidence; ask the user to confirm the requested visible interactions when publication depends on that review. This plugin invokes no external browser, program or interpreter. A server-side health result alone does not establish that every app interaction works; report that limitation instead of claiming an agent-run acceptance test.
 
