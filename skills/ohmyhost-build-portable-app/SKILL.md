@@ -23,6 +23,8 @@ For required application secrets, call `secret_input_request` once for the exact
 
 After a successful save, follow **Show the app to the user** in the bundled deploy Skill for the exact saved version. Fix reported source errors with another guarded managed commit and check its live preview. The hosting service runs builds and application code in its own infrastructure. The plugin uses remote MCP for preview and deployment, and the user checks the app in their browser.
 
+Name each managed Postgres migration file `YYYYMMDDHHMMSS_name.sql`. Use fourteen digits, an underscore, then lowercase letters, digits, `_` or `-`, as in `20261123093000_create_inquiries.sql`. A name such as `0001_inquiries.sql` prevents the preview from starting. Add a new file for changes to an applied migration.
+
 ## AI in the hosted application
 
 For a requested AI feature, keep the application's authentication and add server code to the selected source. A static browser bundle cannot hold an AI credential: use the supported edge runtime, Vite server companion or plain functions Worker. Resolve runtime bindings from the framework's actual server request context. Keep database transactions closed during AI network waits.
@@ -67,7 +69,7 @@ Handle the gateway's `{error:{message,type,code}}` response in the application: 
 
 Use the bundled deploy Skill to open the live preview and check plan, build and health results when deployment is requested. The user tests the real AI interaction in the preview. Report any unverified output, streaming, image, audio or OCR behavior explicitly; a health check must not make a paid AI call. Only the application's user-authorized request content is sent through ohmyho.st and orq.ai to the selected model provider.
 
-A private live preview can run without a deployment. When the app uses a database, check that its isolated preview database is ready before testing data or sign-in. For Native Auth on a live preview, rollout approval is checked before Paid coverage. For `native_auth_launch_unavailable`, ask ohmyho.st support to check rollout access for the selected workspace and project. For `paid_plan_required` during Native Auth preparation, ask the owner to check the workspace plan. Wake the same preview after the reported requirement is satisfied.
+A private live preview can run without a deployment. A preview uses the database for the selected environment and can load data only once that environment has a database. A preview link works for at most 24 hours. After it expires, `preview_open` creates a new preview and link. When a result carries `failure`, follow its `next_step` instead of waiting. For Native Auth on a live preview, rollout approval is checked before Paid coverage. For `native_auth_launch_unavailable`, ask ohmyho.st support to check rollout access for the selected workspace and project. For `paid_plan_required` during Native Auth preparation, ask the owner to check the workspace plan. Wake the same preview after the reported requirement is satisfied.
 
 ## Pinned Next.js form example
 

@@ -23,6 +23,8 @@ For protected secret or GitHub setup, present the actual private link and use `c
 
 Once access is ready, continue with the known requested work. If the user has not described the app or task yet, say simply: "You're connected. Tell me what you'd like to host." Do not display a permission table, internal account IDs or unused restrictions. Explain a current role or token restriction when it blocks requested work. The other bundled Skills cover preparing source, deployment and diagnosis; their instructions are included in this package and are not fetched from an external instruction source.
 
+Wait for required browser input before actions that depend on it.
+
 When continuing a selected app, use **Show the app to the user** in the bundled deploy Skill to open its private live preview even if the current task needs no save.
 
 For a requested AI application feature, continue with the bundled [build workflow](../ohmyhost-build-portable-app/SKILL.md). It covers server-side chat, images, speech, classifiers and OCR, the Paid/credit prerequisite, the customer's explicit jurisdiction choice and automatically injected gateway credentials. This adds no connection, tool or administration permission; current role and token restrictions still apply.
