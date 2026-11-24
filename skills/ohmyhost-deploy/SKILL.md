@@ -1,6 +1,6 @@
 ---
 name: ohmyhost-deploy
-description: Save managed app versions, open a private live preview, and deploy, publish or roll back on request through remote ohmyho.st MCP tools. Reuse the saved project and source and switch only on explicit request.
+description: Save managed app versions, open a private live preview, apply saved database changes where the user chooses, and deploy, publish or roll back on request through remote ohmyho.st MCP tools. Reuse the saved project and source and switch only on explicit request.
 ---
 
 # Version, preview and publish through ohmyho.st
@@ -13,7 +13,7 @@ Use the user's language, two short sentences, one link and at most one question.
 
 For an existing managed source, read and edit its hosted files using the bundled build Skill. For an existing GitHub source, deploy the concrete pushed commit the user selected. This remote plugin cannot inspect a local checkout, create a GitHub repository, edit GitHub files, commit or push to GitHub. If new GitHub source work is needed, explain that concrete limitation and ask the user to prepare it in their chosen GitHub environment; do not call unrelated GitHub tools from this plugin.
 
-When the chosen GitHub workspace connection is missing, use `github_status` and `github_connect` with the verified organization and a retained non-secret request identifier. Give the returned portal link to the user for sign-in and GitHub authorization; check `github_status` after completion. Do not read a GitHub token or reconstruct an OAuth callback. Link only the user's expressly selected repository with `source_link`, then follow its operation and reread the source. An authorization failure repairs that connection; it does not switch the source silently.
+When the chosen GitHub workspace connection is missing, use `github_status` and `github_connect` with the verified organization and a retained non-secret request identifier. Give the returned portal link to the user for sign-in and GitHub authorization; check `github_status` after completion. Do not read a GitHub token or reconstruct an OAuth callback. For an unbound project, link only the user's expressly selected repository with `source_link`, then follow its operation and reread the source. If the selected project is already managed or the service returns `source_switch_unsupported`, read the current binding with `source_get`. Explain that it can keep saving hosted versions and ask whether to use a separate GitHub-backed project if the user needs GitHub source. An authorization failure repairs that connection; it does not switch the source silently.
 
 A new ordinary app made entirely in chat uses `project_create` with the selected organization and project name, `source_provider: "managed"` and `template: "vite-react"`. Respect an explicit region; otherwise ask once for US or EU, without inferring it from a server IP. Preserve an existing project's immutable region. Explain protected versus public Dev and shared versus isolated data before creating them; isolated data consumes resources separately. Protected Dev is the default and the API region default is US. Use the user's chosen modes explicitly when known.
 
@@ -37,9 +37,15 @@ While `ready_to_show` is false, poll `preview_get` for the same project and envi
 
 When a result carries `failure`, stop polling and follow its `next_step`. If it calls for a fix, save the corrected version before calling `preview_open` again. The same saved version fails the same way. If it calls for a wait, open the preview again after the specified interval. The bundled troubleshooting Skill lists the failure codes.
 
-A preview of a database or sign-in app uses the database of the selected environment (Dev or Prod) and loads data only once that environment has a database. Tell the user about this limitation. Deploy only when the user requests a deployment.
+When `ready_to_show` is true, share the returned preview `url` exactly as returned. A shortened, retyped or damaged link stops working. A preview link works for at most 24 hours (`expires_at`). After it expires, `preview_open` creates a new preview with a new link. Share only the newest link. On the first handoff, ask whether the user wants to see the app unless the database migration question below applies. For later saves, say what changed and share the same link once the saved version is ready. Omit the question on later handoffs. Keep private links out of source, notes and logs.
 
-When `ready_to_show` is true, share the returned preview `url` exactly as returned. A shortened, retyped or damaged link stops working. A preview link works for at most 24 hours (`expires_at`). After it expires, `preview_open` creates a new preview with a new link. Share only the newest link. On the first handoff, ask whether the user wants to see the app. For later saves, say what changed and share the same link once the saved version is ready. Omit the question on later handoffs. Keep private links out of source, notes and logs.
+## Apply saved database changes
+
+For a database app, show the ready preview immediately even if `data.state` is `needs_database` or `migrations_pending`. Give the link first and say that saving data works after the tables are created and the app is published. When `data.state` is `needs_database` or `migrations_pending`, use this handoff's one question to ask where to create the tables. On Free or for a project without a Dev site, say the target is Prod and ask for consent to apply there. For a Paid project with a Dev site, ask whether to apply to Dev only or to Dev and Prod, using `data.options`. If `data.shares_data_with` is `prod`, explain that both sites share the same database and either choice affects both.
+
+After the user chooses and consents, call the available `database_migrate` tool once per chosen environment, Dev first, with the selected project, the preview's `source.commit_sha`, `confirm: true` and a new idempotency key. The job creates the selected database if needed and skips files already applied. Follow `operation_get` until the operation ends, then read `preview_get` again. If `migrations_pending` has an empty `data.pending_files` list, the files may already be held without a recorded migration run. The same confirmed migration can verify them. For a refused file, follow the troubleshooting Skill. When publication permission is missing, ask the user to reconnect with that permission before applying to Prod or a Dev environment that shares its database.
+
+The private preview shows the app. Saving data works from the published Dev site on Paid or the live site on Free after the migration. Apply migrations and publish as separate actions.
 
 Use `preview_stop` or `preview_rotate` only when requested, with the same idempotency key on an uncertain retry. Stop removes preview backups and preserves the URL. Rotation cuts off the old URL and active connections.
 

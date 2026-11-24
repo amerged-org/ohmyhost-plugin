@@ -1,7 +1,7 @@
 {
   "name": "ohmyhost",
   "displayName": "ohmyho.st",
-  "version": "0.1.79",
+  "version": "0.1.80",
   "description": "Build website directly in Claude. Create forms, client portals and web apps, then preview and publish with hosting, a shareable URL and a database when needed. So simple this is just amazing and lovable.",
   "author": {
     "name": "Amerged B.V.",
@@ -25,8 +25,8 @@
   "privacyPolicyUrl": "https://ohmyho.st/privacy",
   "termsOfServiceUrl": "https://ohmyho.st/terms",
   "metadata": {
-    "sourceCommit": "c5037f75286d016b59a5c3cf49f36a1b66e57a96",
-    "release": "0.1.79",
+    "sourceCommit": "e0e0611e12a9b6fc2d05e849870749a0ffe7e118",
+    "release": "0.1.80",
     "variant": "claude-directory-remote-only"
   }
 }
