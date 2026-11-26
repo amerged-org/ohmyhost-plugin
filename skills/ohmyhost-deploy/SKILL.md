@@ -1,19 +1,19 @@
 ---
 name: ohmyhost-deploy
-description: Save managed app versions, open a private live preview, apply saved database changes where the user chooses, and deploy, publish or roll back on request through remote ohmyho.st MCP tools. Reuse the saved project and source and switch only on explicit request.
+description: Save managed app versions, open a private live preview, and deploy, publish or roll back on request through remote ohmyho.st MCP tools. Reuse the saved project and source and switch only on explicit request.
 ---
 
 # Version, preview and publish through ohmyho.st
 
-Use only the declared remote MCP connection and bundled access workflow. Read `project_get`, `project_context_get`, `project_status` and `source_get` with `include_binding: true`. Preserve the verified account, organization, project, source binding and generation. The product name or chat platform does not select a different source.
+Use the [customer voice](../ohmyhost-get-started/references/customer-voice.md) in replies.
 
-Use the user's language, two short sentences, one link and at most one question. Share IDs, commit hashes, state values, codes and tool names only on request.
+Use only the declared remote MCP connection and bundled access workflow. Read `project_get`, `project_context_get`, `project_status` and `source_get` with `include_binding: true`. Preserve the verified account, organization, project, source binding and generation. The product name or chat platform does not select a different source.
 
 ## Choose or continue the source
 
 For an existing managed source, read and edit its hosted files using the bundled build Skill. For an existing GitHub source, deploy the concrete pushed commit the user selected. This remote plugin cannot inspect a local checkout, create a GitHub repository, edit GitHub files, commit or push to GitHub. If new GitHub source work is needed, explain that concrete limitation and ask the user to prepare it in their chosen GitHub environment; do not call unrelated GitHub tools from this plugin.
 
-When the chosen GitHub workspace connection is missing, use `github_status` and `github_connect` with the verified organization and a retained non-secret request identifier. Give the returned portal link to the user for sign-in and GitHub authorization; check `github_status` after completion. Do not read a GitHub token or reconstruct an OAuth callback. For an unbound project, link only the user's expressly selected repository with `source_link`, then follow its operation and reread the source. If the selected project is already managed or the service returns `source_switch_unsupported`, read the current binding with `source_get`. Explain that it can keep saving hosted versions and ask whether to use a separate GitHub-backed project if the user needs GitHub source. An authorization failure repairs that connection; it does not switch the source silently.
+When the chosen GitHub workspace connection is missing, use `github_status` and `github_connect` with the verified organization and a retained non-secret request identifier. Give the returned portal link to the user for sign-in and GitHub authorization; check `github_status` after completion. Do not read a GitHub token or reconstruct an OAuth callback. Link only the user's expressly selected repository with `source_link`, then follow its operation and reread the source. An authorization failure repairs that connection; it does not switch the source silently.
 
 A new ordinary app made entirely in chat uses `project_create` with the selected organization and project name, `source_provider: "managed"` and `template: "vite-react"`. Respect an explicit region; otherwise ask once for US or EU, without inferring it from a server IP. Preserve an existing project's immutable region. Explain protected versus public Dev and shared versus isolated data before creating them; isolated data consumes resources separately. Protected Dev is the default and the API region default is US. Use the user's chosen modes explicitly when known.
 
@@ -31,31 +31,20 @@ Only on the user's explicit GitHub-to-managed switch request, explain the source
 
 ## Show the app to the user
 
-Free and Paid workspaces can open a private live preview without deploying. Call `preview_open` after each successful save, when continuing an existing project even if a save is unnecessary, or when the user asks to see the app. Read the workspace plan from `identity_get` or `organization_account_get` and check the project environments with `project_status`. Use `environment: dev` if the workspace is Paid and the project has Dev. Otherwise use `environment: prod`. If plan access is denied, ask the workspace Owner to confirm the plan.
-
-While `ready_to_show` is false, poll `preview_get` for the same project and environment about every 10 seconds for up to two minutes. Follow `next_step` and relay `say_to_user` in the user's language, applying these handoff rules to any link or question. If the preview still needs time, say it is getting ready.
-
-When a result carries `failure`, stop polling and follow its `next_step`. If it calls for a fix, save the corrected version before calling `preview_open` again. The same saved version fails the same way. If it calls for a wait, open the preview again after the specified interval. The bundled troubleshooting Skill lists the failure codes.
-
-When `ready_to_show` is true, share the returned preview `url` exactly as returned. A shortened, retyped or damaged link stops working. A preview link works for at most 24 hours (`expires_at`). After it expires, `preview_open` creates a new preview with a new link. Share only the newest link. On the first handoff, ask whether the user wants to see the app unless the database migration question below applies. For later saves, say what changed and share the same link once the saved version is ready. Omit the question on later handoffs. Keep private links out of source, notes and logs.
-
-## Apply saved database changes
-
-For a database app, show the ready preview immediately even if `data.state` is `needs_database` or `migrations_pending`. Give the link first and say that saving data works after the tables are created and the app is published. When `data.state` is `needs_database` or `migrations_pending`, use this handoff's one question to ask where to create the tables. On Free or for a project without a Dev site, say the target is Prod and ask for consent to apply there. For a Paid project with a Dev site, ask whether to apply to Dev only or to Dev and Prod, using `data.options`. If `data.shares_data_with` is `prod`, explain that both sites share the same database and either choice affects both.
-
-After the user chooses and consents, call the available `database_migrate` tool once per chosen environment, Dev first, with the selected project, the preview's `source.commit_sha`, `confirm: true` and a new idempotency key. The job creates the selected database if needed and skips files already applied. Follow `operation_get` until the operation ends, then read `preview_get` again. If `migrations_pending` has an empty `data.pending_files` list, the files may already be held without a recorded migration run. The same confirmed migration can verify them. For a refused file, follow the troubleshooting Skill. When publication permission is missing, ask the user to reconnect with that permission before applying to Prod or a Dev environment that shares its database.
-
-The private preview shows the app. Saving data works from the published Dev site on Paid or the live site on Free after the migration. Apply migrations and publish as separate actions.
-
-Use `preview_stop` or `preview_rotate` only when requested, with the same idempotency key on an uncertain retry. Stop removes preview backups and preserves the URL. Rotation cuts off the old URL and active connections.
+Use the [preview workflow](references/preview.md) before building a deployed version.
+Give the link first and explain when saving works. For a data app that needs setup,
+follow the [database setup workflow](references/database-setup.md).
+For GitHub, compare `applied_source.commit_sha` with the exact pushed commit the user
+selected. If they differ or the applied commit is unavailable, explain that the preview
+follows the bound branch and the selected commit has not been verified there.
 
 ## Build, inspect and publish
 
-Deploy or publish when the user asks for that action. “Deploy”, “publish” and “go live” each ask for it. Call `deployment_plan` for the exact saved commit and the requested environment. Review its actual costs, requirements and effects within the user's request. Use `secret_input_request` when required, give the user its protected portal link, and inspect only the returned status and secret metadata. Set required secrets for each target environment. If funding or another prerequisite blocks deployment, direct the user to their signed-in workspace.
+For a requested deployment or publication, use the exact commit selected for deployment, including when the branch preview shows a different version. Call `deployment_plan` for that commit and the requested environment. Review its actual costs, requirements and effects within the user's request. Use `secret_input_request` when required, give the user its protected portal link, and inspect only the returned status and secret metadata. Set required secrets for each target environment. If funding or another prerequisite blocks deployment, direct the user to their signed-in workspace.
 
-Start `deployment_create` with the exact plan ID and one retained non-secret request identifier. Follow the returned `operation_get` at the suggested interval. On failure, read `deployment_get` and `deployment_logs` for the actual deployment before retrying. After success, read `project_status` to verify the deployed version. The deployed Dev site is a private test site for Paid workspaces. When the user asks for it, share only the `share_url` from `project_dev_share_link_get`. Explain if it is unavailable. For a requested Prod deployment, share the verified public address.
+Start `deployment_create` with the exact plan ID and one retained non-secret request identifier. Follow the returned `operation_get` at the suggested interval. On failure, read `deployment_get` and `deployment_logs` for the actual deployment before retrying. After success, read `project_status` to verify the deployed version. For a requested Dev address, use the handoff in the preview workflow. For a requested Prod deployment, share the verified public address.
 
-The user inspects the preview in their browser. Use MCP deployment/status results for server-side completion and health evidence; ask the user to confirm the requested visible interactions when publication depends on that review. This plugin invokes no external browser, program or interpreter. A server-side health result alone does not establish that every app interaction works; report that limitation instead of claiming an agent-run acceptance test.
+The user inspects the preview in their browser. Use MCP deployment/status results for server-side completion and health evidence. For a data app, ask the customer to submit a permitted test record on the published site and check it after a reload. For other apps, invite them to try the main action. State which checks the customer still needs to perform. This plugin invokes no external browser, program or interpreter.
 
 If the requested deployment already went to Prod, verify that operation. To publish a verified Dev deployment with the required role and token, read `promotion_plan` and use `deployment_promote` with the same deployment ID, exact ETag/precondition, confirmation token and retained request identifier. Follow the accepted operation, verify production status and share the public address. Use an exact-commit Prod plan when the user requests direct deployment and the plan supports it, including with shared data.
 
@@ -67,4 +56,6 @@ The service continues checking a sealed source candidate. Follow its original op
 
 ## Delete a project
 
-For a requested project deletion, call `delete_plan` for the selected project. Review its effects with the user. The plan returns a `resource_etag` and a `confirmation_token` valid for ten minutes. After the user confirms, call `delete_execute` with the selected `project_id`, `if_match` set to the returned `resource_etag`, the `confirmation_token` and a retained `idempotency_key`. Follow the returned `operation_get` through completion. Deletion removes deployments, databases, files, schedules, stored SQL exports and the domain, mail and DNS records ohmyho.st created. If database records or files need to be retained, direct the user to export or download them before deleting. If the operation fails, follow its suggested action and plan again once no other project operation is running.
+For a requested project deletion, call `delete_plan` for the selected project. Read its effects and explain what the deletion will remove. The plan returns a `resource_etag` and a `confirmation_token` valid for ten minutes. `delete_execute` takes the selected `project_id`, `if_match` set to the returned `resource_etag`, the `confirmation_token` and a retained `idempotency_key`. Follow the returned `operation_get` through completion. Deletion removes deployments, databases, files, schedules, stored SQL exports and the domain, mail and DNS records ohmyho.st created. If database records or files need to be retained, direct the user to export or download them before deleting. If the operation fails, follow its suggested action and plan again once no other project operation is running.
+
+Skill release 0.1.84. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.

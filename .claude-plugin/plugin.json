@@ -1,8 +1,8 @@
 {
   "name": "ohmyhost",
   "displayName": "ohmyho.st",
-  "version": "0.1.80",
-  "description": "Build website directly in Claude. Create forms, client portals and web apps, then preview and publish with hosting, a shareable URL and a database when needed. So simple this is just amazing and lovable.",
+  "version": "0.1.84",
+  "description": "Build websites, forms and apps in Claude. Open a private preview, then publish when you are ready.",
   "author": {
     "name": "Amerged B.V.",
     "url": "https://ohmyho.st"
@@ -10,23 +10,12 @@
   "homepage": "https://docs.ohmyho.st/",
   "repository": "https://github.com/amerged-org/ohmyhost-plugin",
   "license": "Apache-2.0",
-  "keywords": [
-    "hosting",
-    "web-apps",
-    "claude",
-    "app-builder",
-    "launch"
-  ],
+  "keywords": ["hosting", "web-apps", "claude", "app-builder", "launch"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "icon": "./assets/icon.png",
   "documentationUrl": "https://docs.ohmyho.st/",
   "supportUrl": "https://docs.ohmyho.st/support",
   "privacyPolicyUrl": "https://ohmyho.st/privacy",
-  "termsOfServiceUrl": "https://ohmyho.st/terms",
-  "metadata": {
-    "sourceCommit": "e0e0611e12a9b6fc2d05e849870749a0ffe7e118",
-    "release": "0.1.80",
-    "variant": "claude-directory-remote-only"
-  }
+  "termsOfServiceUrl": "https://ohmyho.st/terms"
 }

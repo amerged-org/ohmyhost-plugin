@@ -4,8 +4,6 @@ Build websites, forms, client portals and web apps by describing what you need i
 
 ohmyho.st provides hosting and managed PostgreSQL for applications that need a database. Paid workspaces can also add server-side AI chat, images, speech, classifiers and OCR through the hosted gateway, choosing from orq.ai models and an explicit jurisdiction. Create a landing page, collect form submissions or build a customer portal, then return to the same chat to make changes.
 
-So simple this is just amazing and lovable.
-
 ![ohmyho.st logo](./assets/icon.png)
 
 ## Connect and start
@@ -26,13 +24,13 @@ The plugin has four self-contained workflows: connecting to the correct account/
 
 ## What runs and what data is handled
 
-The package contains four static Markdown Skills, one remote MCP configuration, brand and license files, and a source receipt. It has no hooks, commands, local MCP executable, installer, interpreter, executable helper, extension, local file workflow, environment-variable input or persistent password configuration. It does not execute code on the user's machine, collect local credentials, inspect another application's credential store, or fetch behavioral instructions from outside the package.
+The package contains four static Markdown Skills, one remote MCP configuration, brand and license files, and shared reference files. It has no hooks, commands, local MCP executable, installer, interpreter, executable helper, extension, local file workflow, environment-variable input or persistent password configuration. It does not execute code on the user's machine, collect local credentials, inspect another application's credential store, or fetch behavioral instructions from outside the package.
 
-Requests to the declared first-party ohmyho.st service can read the selected project's files, saved versions, status, configuration metadata and deployment diagnostics; requested writes save application source, create builds/previews, apply saved schema migrations to the environment the user chooses, promote the inspected artifact, or restore/roll back the explicitly selected version. The declared service runs the application's build and hosted code in its own infrastructure. That server-side hosting is the product's function; no local process is launched by this plugin. Cloudflare provides hosting, builds, Git and file infrastructure, the open-source [PGCF](https://github.com/amerged-org/cloudflare-postgres) platform runs managed PostgreSQL on Contabo servers behind the hosting service, and WorkOS handles account identity. The agent does not configure those providers or access their credentials.
+Requests to the declared first-party ohmyho.st service can read the selected project's files, saved versions, status, configuration metadata and deployment diagnostics; requested writes save application source, create builds/previews, promote the inspected artifact, or restore/roll back the explicitly selected version. The declared service runs the application's build and hosted code in its own infrastructure. That server-side hosting is the product's function; no local process is launched by this plugin. Cloudflare provides hosting, builds, Git and file infrastructure, the open-source [PGCF](https://github.com/amerged-org/cloudflare-postgres) platform runs managed PostgreSQL on Contabo servers behind the hosting service, and WorkOS handles account identity. The agent does not configure those providers or access their credentials.
 
-When a requested application feature uses AI, its prompts, input files and generated output pass through the ohmyho.st gateway and orq.ai to the selected model provider. The injected gateway credential stays in the application server; it never reaches this chat or the browser. Realtime voice is implemented but has no completed hosted acceptance claim.
+When a requested application feature uses AI, its prompts, input files and generated output pass through the ohmyho.st gateway and orq.ai to the selected model provider. The injected gateway credential stays in the application server; it never reaches this chat or the browser. Realtime voice uses the application server. Check the voice flow in the app you build.
 
-Application secrets use protected portal input. One form can group up to ten named secrets for one project and environment. The person enters the values in the form and the chat receives the link and name-only outcomes. Keep private approval and preview links out of application source and shared notes. The workflows send data needed for the selected project action.
+Application secrets use protected portal input. One form can group up to ten named secrets for one project and environment. The person enters the values in the form and the chat receives the link and name-only outcomes. Keep private setup and preview links out of application source and shared notes. The workflows send data needed for the selected project action.
 
 Database administration/export, Supabase migration, custom-domain/mail administration, usage/budget changes, payments, subscriptions and auto-recharge are outside this plugin's scope. The wider ohmyho.st CLI and independently installed tools can have other capabilities; this plugin does not disable them and does not use them. When such a prerequisite is needed, the user completes it manually in their signed-in workspace or a separately chosen environment.
 
@@ -40,4 +38,7 @@ Database administration/export, Supabase migration, custom-domain/mail administr
 
 Read the [documentation](https://docs.ohmyho.st/), [support guide](https://docs.ohmyho.st/support), [privacy policy](https://ohmyho.st/privacy), and [terms](https://ohmyho.st/terms). Contact ohmyho.st through [the contact page](https://ohmyho.st/contact).
 
-This Apache-2.0 package tracks ohmyho.st client release `0.1.80` from platform commit `e0e0611e12a9b6fc2d05e849870749a0ffe7e118`. The four Claude-specific workflows include named operation discovery, private Live Project Preview after each save and grouped secret entry. Claude deploys or publishes when you request it.
+This package uses the same customer voice, preview workflow and Vite guidance as the full
+ohmyho.st Skill catalog. The four remote workflows and the shared references are ready for
+packaging from the platform checkout. Run `node scripts/prepare-agent-plugin.mjs --claude`
+there to prepare the files for this variant.
