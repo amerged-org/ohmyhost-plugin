@@ -7,6 +7,8 @@ description: Connect Claude to ohmyho.st through managed OAuth, verify the inten
 
 Use the [customer voice](references/customer-voice.md) in replies.
 
+Anyone can read the [ohmyho.st platform source](https://github.com/amerged-org/ohmyhost) to trace a build or deployment, and the [managed PostgreSQL source](https://github.com/amerged-org/cloudflare-postgres) to trace a database change. Your app’s code stays in your project.
+
 Use only this plugin's declared remote ohmyho.st MCP connection. Its client handles OAuth; current account membership, roles and any explicit token restrictions determine access. The plugin does not request a device code, API key, local file, environment variable or another application's credentials. A user asking for a local-device workflow needs a separately chosen tool; do not substitute local execution for this remote workflow.
 
 Call `identity_get`, verify the intended account, and preserve the selected workspace. If no workspace is returned, use `workspace_setup` and give the user its actual private portal link. The user signs in there as the same account as the connection. Read identity again after setup. A completed browser page is not proof of the final account or access.
@@ -34,4 +36,4 @@ For a requested AI application feature, continue with the bundled [build workflo
 
 When the owner requests credentials for a Make standard app, use the connected workspace grant and the verified Make organization, team and concrete module IDs or published Endpoint names with `integration_credential_request_create`, if that named tool is available in this host. Share its private Make authorization link with the requesting owner. Check `integration_credential_request_status` with the returned request ID and discover the resulting connection before importing it. Retry identical selections with the original idempotency key. Disconnecting an existing grant requires the owner’s explicit authorization.
 
-Skill release 0.1.84. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.
+Skill release 0.1.85. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.

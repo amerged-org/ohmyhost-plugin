@@ -61,4 +61,4 @@ Use the named tools the host actually exposes.
 
 Return a brief explanation of what failed, what evidence shows it, and the next useful action. Keep safe technical details in support reports. Leave credentials, private links, raw logs and customer records out of them. If support outside these tools is necessary, point the user to the documented ohmyho.st support/contact portal; do not submit messages through an undeclared service. Schema validation, OAuth completion and a saved version do not prove that the app is working.
 
-Skill release 0.1.84. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.
+Skill release 0.1.85. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.

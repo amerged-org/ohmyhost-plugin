@@ -7,6 +7,8 @@ description: Save managed app versions, open a private live preview, and deploy,
 
 Use the [customer voice](../ohmyhost-get-started/references/customer-voice.md) in replies.
 
+Anyone can read the [ohmyho.st platform source](https://github.com/amerged-org/ohmyhost) to trace a build or deployment, and the [managed PostgreSQL source](https://github.com/amerged-org/cloudflare-postgres) to trace a database change. Your app’s code stays in your project.
+
 Use only the declared remote MCP connection and bundled access workflow. Read `project_get`, `project_context_get`, `project_status` and `source_get` with `include_binding: true`. Preserve the verified account, organization, project, source binding and generation. The product name or chat platform does not select a different source.
 
 ## Choose or continue the source
@@ -58,4 +60,4 @@ The service continues checking a sealed source candidate. Follow its original op
 
 For a requested project deletion, call `delete_plan` for the selected project. Read its effects and explain what the deletion will remove. The plan returns a `resource_etag` and a `confirmation_token` valid for ten minutes. `delete_execute` takes the selected `project_id`, `if_match` set to the returned `resource_etag`, the `confirmation_token` and a retained `idempotency_key`. Follow the returned `operation_get` through completion. Deletion removes deployments, databases, files, schedules, stored SQL exports and the domain, mail and DNS records ohmyho.st created. If database records or files need to be retained, direct the user to export or download them before deleting. If the operation fails, follow its suggested action and plan again once no other project operation is running.
 
-Skill release 0.1.84. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.
+Skill release 0.1.85. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.
