@@ -136,4 +136,4 @@ For a hosted check, a guest opens the sign-in screen, a verified customer create
 
 For Live Preview, save a visible edit and observe the same open tab and URL. For scheduled work, check the actual UTC invocation and its persisted effect.
 
-Skill release 0.1.85. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.
+Skill release 0.1.86. Compare it with the version at <https://ohmyho.st/client-release.json>. If your copy is older, refresh the installed Skill or plugin before following its instructions.
